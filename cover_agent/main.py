@@ -2,11 +2,17 @@ import argparse
 import os
 
 from dynaconf import Dynaconf
+import litellm
 
 from cover_agent.cover_agent import CoverAgent
 from cover_agent.settings.config_loader import get_settings
 from cover_agent.settings.config_schema import CoverAgentConfig
 from cover_agent.version import __version__
+
+from dotenv import load_dotenv
+import os
+print(os.getenv("OPENAI_API_KEY"))
+load_dotenv()
 
 
 def parse_args(settings: Dynaconf) -> argparse.Namespace:
@@ -187,3 +193,18 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # print(os.getenv("OPENAI_API_KEY"))
+    
+
+    # response = litellm.completion(
+    #     model=os.getenv("LITELLM_MODEL"),
+    #     provider=os.getenv("LITELLM_PROVIDER"),
+    #     api_base=os.getenv("LITELLM_API_BASE"),
+    #     messages=[
+    #         {"role": "user", "content": "Write a JUnit test for a Java service method that calculates interest."}
+    #     ],
+    #     stream=False
+    # )
+
+    # print("✅ Response:", response.choices[0].message.content)
+

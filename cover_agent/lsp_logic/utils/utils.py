@@ -9,6 +9,7 @@ import tempfile
 import time
 from pathlib import Path
 from urllib.parse import unquote, urlparse
+from typing import List
 
 # import git
 
@@ -17,7 +18,7 @@ from urllib.parse import unquote, urlparse
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".bmp", ".tiff", ".webp"}
 
 
-def find_relevant_files_in_repo(repo_root: str, chat_files: list[str]):
+def find_relevant_files_in_repo(repo_root: str, chat_files:list[str]):
     gitignore_file = Path(repo_root) / ".gitignore"
     gitignore_content = ""
     if gitignore_file.exists():
